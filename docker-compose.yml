@@ -1,0 +1,20 @@
+services:
+  cpp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/app/data      
+    stdin_open: true
+    tty: true
+
+  node-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    ports:
+      - "3003:3003"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - cpp-server
