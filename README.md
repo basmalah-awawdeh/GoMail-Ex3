@@ -88,7 +88,7 @@ curl -X POST http://localhost:3003/api/users \
 ```bash
 curl -X POST http://localhost:3003/api/users/tokens \
   -H "Content-Type: application/json" \
-  -d '{"username":"alice", "password":"1234"}'
+  -d '{"username":"basmalah", "password":"1234"}'
 ```
 ![login and get user id](https://github.com/user-attachments/assets/db8ed626-1962-43e6-a2b8-b4e63cd63f79)
 
@@ -96,15 +96,17 @@ curl -X POST http://localhost:3003/api/users/tokens \
 ### Send a mail containing links
 
 ```bash
-curl -X POST http://localhost:3003/api/mails \
+curl -i -X POST http://localhost:3003/api/mails \
   -H "Content-Type: application/json" \
-  -H "x-user-id: <user-id>" \
+  -H "x-user-id: 8d0b1521-4c62-4674-9860-48f617b496dc" \
   -d '{
-    "to": "<recipient-id>",
-    "subject": "Hello",
-    "body": "Check this site",
-    "links": ["http://bad.com"]
-  }'
+    "to": "khaled",
+    "subject": "Nice website",
+    "body": "Check this out",
+    "links": ["http://example.com"],
+    "sent": true
+}'
+
 ```
 ![send mail the url not blacklisted](https://github.com/user-attachments/assets/1ff4e6e2-857c-4f19-bda7-391a16acd981)
 
@@ -149,16 +151,17 @@ curl -i -X GET http://localhost:3003/api/mails   -H "x-user-id:<your-user-id>"
 ```bash
 curl -i -X PATCH http://localhost:3003/api/mails/<mail-id> \
   -H "Content-Type: application/json" \
-  -H "x-user-id: <user-id>" \
+  -H "x-user-id: 8d0b1521-4c62-4674-9860-48f617b496dc" \
   -d '{
-    "subject": "Updated Subject",
-    "body": "Updated body content here."
+    "subject": "Updated Subject Line"
   }'
+
 ```
 ![patch the mail](https://github.com/user-attachments/assets/85709d3d-97b5-493c-b0c8-9fa22a486656)
 
+If the mail is sent, patching will fail
 
-![get the mails after patch](https://github.com/user-attachments/assets/88e8706a-7c81-4528-b8b5-f65ec542f26c)
+
 
 
 
