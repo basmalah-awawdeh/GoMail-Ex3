@@ -48,7 +48,6 @@ export const addBlacklistedLink = async (req, res) => {
   try {
     //asking cpp server to add url
     const cppResponse = await sendToCppServer(url, 'ADD');
-    console.log('C++ Response:', cppResponse);
     //creating entry if it doesn't exist in the memory
     let entry = blacklist.find(b => b.url === url);
     if (!entry){
