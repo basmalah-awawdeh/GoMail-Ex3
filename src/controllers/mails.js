@@ -36,15 +36,17 @@ export const sendMail = async (req, res) => {
     console.error('C++ server error:', err.message);
     return res.status(500).json({ error: 'Spam check failed' });
   }
-  //storing the mail in memory
+  //storing the mail in memory, in the beginning it is draft
   const mail = {
     id: uuidv4(),
     from: req.userId,
     to,
     subject,
     body,
-    links
+    links,
+    sent: false 
   };
+
   mails.push(mail);
   res.status(201).end();
 };
@@ -61,9 +63,14 @@ export const getMailById = (req, res) => {
 //updating the mail
 export const updateMail = (req, res) => {
   const mail = mails.find(m => m.id === req.params.id);
-  if (!mail){
+  if (!mail) {
     return res.status(404).json({ error: 'Mail not found' });
   }
+  //updating sent mail not allowed
+  if (mail.sent) {
+    return res.status(403).json({ error: 'Cannot edit a sent mail' });
+  }
+
   Object.assign(mail, req.body);
   res.status(204).end();
 };
