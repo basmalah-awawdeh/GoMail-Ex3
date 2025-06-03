@@ -90,7 +90,7 @@ curl -X POST http://localhost:3003/api/users/tokens \
   -H "Content-Type: application/json" \
   -d '{"username":"basmalah", "password":"1234"}'
 ```
-![login and get user id](https://github.com/user-attachments/assets/db8ed626-1962-43e6-a2b8-b4e63cd63f79)
+![451034162-a16e5fd8-f2d0-422a-99db-6768ad2b3eff](https://github.com/user-attachments/assets/b6652e17-1752-40f7-92ab-a1e793387d59)
 
 
 ### Send a mail containing links
@@ -108,13 +108,13 @@ curl -i -X POST http://localhost:3003/api/mails \
 }'
 
 ```
-![send mail the url not blacklisted](https://github.com/user-attachments/assets/1ff4e6e2-857c-4f19-bda7-391a16acd981)
+![451034165-3acef232-36b1-46ef-a527-2a4dc03ceef9](https://github.com/user-attachments/assets/d546e3c9-659c-4117-97de-efdef6bd50f6)
 
 
 If the link is blacklisted, the mail will be rejected.
 
+![451034166-50f867f2-002a-461c-ae94-0c14cb11e96c](https://github.com/user-attachments/assets/5ed9086c-063b-49cb-b66b-1105bd3f7c3a)
 
-![send mail the url is blacklisted](https://github.com/user-attachments/assets/e982c736-678f-4afc-890c-eaa279e343b0)
 
 ---
 
@@ -157,10 +157,12 @@ curl -i -X PATCH http://localhost:3003/api/mails/<mail-id> \
   }'
 
 ```
-![patch the mail](https://github.com/user-attachments/assets/85709d3d-97b5-493c-b0c8-9fa22a486656)
+![451034163-f619f10c-baeb-49c3-8b88-93c617541f5f](https://github.com/user-attachments/assets/5ae62acb-583f-4f55-8b5c-df5a06ced662)
+
 
 If the mail is sent, patching will fail
 
+![451034164-a06b431c-140b-4e24-80f6-e95ed087de78](https://github.com/user-attachments/assets/a5f599ca-3906-487e-922d-5e9d700a982a)
 
 
 
